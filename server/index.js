@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 import cors from "cors";
-import { eventRouter, mailRouter } from "./routes/index.js";
+import { eventRouter, mailRouter, authRouter } from "./routes/index.js";
 import { SendEmail } from "./middlewares/index.js";
 import { connectMongo } from "./utils/db.js";
 
@@ -16,8 +16,10 @@ export const emailQueue = [];
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/public', express.static('public')); 
 app.use("/email", mailRouter);
 app.use("/event", eventRouter);
+app.use("/auth", authRouter)
 
 app.get("/api/test", (req, res)=>{
   res.status(200).json({message:"Hello, World"})

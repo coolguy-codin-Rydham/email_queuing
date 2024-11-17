@@ -23,12 +23,12 @@ describe("Unit Test Event Controller" ,()=>{
         .send(payload)
         .set("Content-Type", "application/json");
 
-        // console.log(response)
+        console.log(response)
 
         expect(response.status).toBe(201);
         expect(response.body).toEqual({
             message: "Event created successfully",
-            // event: response,
+            event: response,
             status: "Created",
         })
 

@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "eigengrau": "#161611",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

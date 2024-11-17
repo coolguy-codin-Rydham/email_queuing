@@ -35,6 +35,50 @@ export const CreateEventController = async (req, res) => {
 };
 
 
+export const GetAllEvents = async (req, res) => {
+    try {
+        const data = await getAllEvents();
+        res.status(200).json({ data });
+    } catch (error) {
+        res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
+};
+
+export const GetEventByEventId = async(req, res)=>{
+    const eventId = req.params.id;
+
+    console.log(req.params)
+
+    try{
+        const event = await getEventById(eventId);
+        res.status(200).json({
+            event:event
+        })
+    }catch(e){
+        res.status(500).json({error:e})
+    }
+}
+
+const getEventById = async(eventId) => {
+    try{
+        const event = await EventModel.findOne({"_id":eventId});
+        return event;
+    }catch(e){
+        throw e
+    }
+}
+    
+
+
+const getAllEvents = async () => {
+    try {
+        const data = await EventModel.find();
+        return data; 
+    } catch (error) {
+        throw error; 
+    }
+};
+
 
 //Create Mail function returns a 
 const createEventController = async (eventDetails) => {

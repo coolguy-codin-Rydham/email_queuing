@@ -2,7 +2,7 @@
 
 
 import { emailQueue } from "../index.js";
-import { transporter } from "./mailer.js";
+import { transporter } from "../utils/mailer.js";
 
 const emailText = "Hello World";
 
