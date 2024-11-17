@@ -138,7 +138,7 @@ const Signup = () => {
               <Controller
                 name="role"
                 control={control}
-                defaultValue="Hybrid"
+                defaultValue="Attendee"
                 render={({ field }) => (
                   <select
                     {...field}
